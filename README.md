@@ -22,12 +22,15 @@ notebooks/
 ├── 01_data_collection.ipynb      # Fetch weather data from Open-Meteo API
 ├── 02_preprocessing.ipynb        # Clean, merge, and prepare data
 ├── 03_eda.ipynb                  # Exploratory analysis + K-means clustering
-└── 04_model.ipynb                # Regression model + evaluation + interpretation
+├── 04_model.ipynb                # Regression model + evaluation + interpretation
+└── 05_database.ipynb             # PostgreSQL integration (bonus feature)
 
 data/
 ├── weather_zurich.csv            # Hourly weather data (2023)
 ├── bikes_raw.csv                 # Hourly bicycle counts (2023)
 └── merged_weather_bikes.csv      # Combined dataset for analysis
+
+docker-compose.yml                # PostgreSQL database configuration
 ```
 
 ## Key Features
@@ -47,12 +50,15 @@ data/
 - ✅ **Correlation Analysis**: Pearson & Spearman with p-values
 - ✅ **Silhouette Score**: Cluster quality evaluation
 - ✅ **Elbow Method**: Optimal cluster selection
+- ✅ **PostgreSQL Integration**: Professional database setup with Docker
 - ✅ **ZHAW Style**: Exact formatting, matplotlib visualizations, proper structure
 
 ## Technology Stack
 - **Python 3.x** with pandas, numpy, scikit-learn, matplotlib
 - **Jupyter Notebooks** for interactive analysis
 - **Open-Meteo API** for weather data
+- **PostgreSQL 15** with Docker for data persistence
+- **psycopg2** for database connectivity
 - **Synthetic data** for bicycle counters (representative patterns)
 
 ## Results Highlights
@@ -77,6 +83,7 @@ data/
 
 ## How to Run
 
+### Option 1: Without Database
 1. **Install dependencies**:
    ```bash
    pip install pandas numpy matplotlib seaborn scikit-learn scipy requests
@@ -90,12 +97,32 @@ data/
 
 3. **Data will be saved to `data/` folder**
 
+### Option 2: With PostgreSQL Database (Bonus)
+1. **Start PostgreSQL container**:
+   ```bash
+   docker compose up -d
+   ```
+
+2. **Install additional dependencies**:
+   ```bash
+   pip install psycopg2-binary
+   ```
+
+3. **Run all notebooks including**:
+   - `05_database.ipynb` – PostgreSQL integration and SQL queries
+
+4. **Database credentials**:
+   - Host: localhost
+   - Database: weatherbike
+   - User: student
+   - Password: student123
+
 ## Future Enhancements
-- PostgreSQL database integration
 - Geographic data visualization (maps)
 - ANOVA for group comparisons
 - Advanced models (Random Forest, Neural Networks)
 - Time series forecasting
+- Real-time data integration
 
 ---
 
