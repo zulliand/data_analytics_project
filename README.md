@@ -64,22 +64,28 @@ docker-compose.yml                # PostgreSQL database configuration
 ## Results Highlights
 
 ### Model Performance
-- **Test R² Score**: ~0.85 (model explains 85% of variance)
-- **RMSE**: ~15.3 bicycles
-- **MAE**: ~10.2 bicycles
+- **Test R² Score**: 0.687 (model explains 68.7% of variance)
+- **Test RMSE**: 7,030 bicycles per day
+- **Test MAE**: 6,039 bicycles per day
+- **Features used**: Temperature, Humidity, Wind Speed, Precipitation, Weekday, Month
 
 ### Key Insights
-1. **Hour of day** is the strongest predictor (rush hours vs. off-peak)
-2. **Temperature** shows positive correlation with usage
-3. **Precipitation** significantly reduces bicycle usage
-4. **Weekday/Weekend** patterns are distinct
-5. **K-means analysis** identifies 3 distinct usage clusters
+1. **Temperature** is the strongest positive predictor (coef=+836, r=0.607, p<0.001)
+2. **Wind Speed** is the strongest negative predictor (coef=-789, r=-0.208, p<0.001)
+3. **Precipitation** significantly reduces bicycle usage (coef=-573, r=-0.296, p<0.001)
+4. **Humidity** shows moderate negative correlation (coef=-404, r=-0.524, p<0.001)
+5. **Weekday patterns** show strong weekend preference for recreational cycling
+6. **K-means analysis** identifies 3 distinct usage clusters (cold/low, warm/high, transition)
 
-### Correlation Findings (p-values)
-- Temperature vs Bikes: r=+0.34, p<0.001 ✓ Significant
-- Precipitation vs Bikes: r=-0.28, p<0.001 ✓ Significant
-- Humidity vs Bikes: r=-0.12, p<0.001 ✓ Significant
-- Wind Speed vs Bikes: r=-0.08, p<0.001 ✓ Significant
+### Statistical Test Results
+- **Chi-squared test**: Weather quality vs bike usage shows significant association (χ²=47.8, p<0.001)
+- **ANOVA**: Significant differences in bike usage across weekdays (p<0.001)
+- **Pearson correlations** (all highly significant, p<0.001):
+  - Temperature: r=+0.607 (strong positive)
+  - Humidity: r=-0.524 (moderate negative)
+  - Precipitation: r=-0.296 (moderate negative)
+  - Wind Speed: r=-0.208 (weak negative)
+- **K-means silhouette score**: 0.337 (fair cluster quality with k=3)
 
 ## How to Run
 
@@ -113,16 +119,26 @@ docker-compose.yml                # PostgreSQL database configuration
 
 4. **Database credentials**:
    - Host: localhost
-   - Database: weatherbike
-   - User: student
-   - Password: student123
+   - Database: postgres
+   - User: pgadmin
+   - Password: geheim
+   - Port: 5432
 
-## Future Enhancements
-- Geographic data visualization (maps)
-- ANOVA for group comparisons
-- Advanced models (Random Forest, Neural Networks)
-- Time series forecasting
-- Real-time data integration
+## Limitations & Future Enhancements
+
+### Current Limitations
+- Data covers one year only (2025) - longer time series would improve seasonal analysis
+- Daily aggregation may hide intraday patterns (rush hour effects)
+- Does not account for holidays, events, or infrastructure changes
+- Linear model may not capture non-linear weather interactions
+
+### Future Enhancements
+- Add hourly data for intraday pattern modeling (rush hours, night vs day)
+- Incorporate holiday and event indicators (festivals, concerts, strikes)
+- Implement non-linear models (Random Forest, XGBoost) for potential R² improvement
+- Time series forecasting with ARIMA/Prophet for operational planning
+- Geographic visualization with interactive maps
+- Real-time weather integration for dynamic predictions
 
 ---
 

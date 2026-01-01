@@ -28,12 +28,14 @@ services:
       - db
 
   db:
-    image: postgres:latest
+    image: postgres:15
     restart: always          
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: pgadmin
       POSTGRES_PASSWORD: geheim
+    ports:
+      - "5432:5432"
     volumes:                 
       - pg-data:/var/lib/postgresql/data
       - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
