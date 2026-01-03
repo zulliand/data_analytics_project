@@ -6,11 +6,10 @@
 
 #### 1. **docker-compose.yml** (NEW)
 - PostgreSQL 15 service configuration
-- Container: `postgres_container`
-- Database: `weatherbike`
-- Credentials: student/student123
+- Database: `postgres`
+- Credentials: pgadmin/geheim
 - Port: 5432
-- Persistent volume: `pgdata`
+- Persistent volume: `pg-data`
 - Status: ✅ Running
 
 #### 2. **notebooks/05_database.ipynb** (NEW)
