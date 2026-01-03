@@ -145,5 +145,3 @@ docker-compose.yml                # PostgreSQL database configuration
 **Author**: ZHAW Data Analytics Project  
 **Date**: December 2025  
 **Status**: Complete
-
-# Test Consti
