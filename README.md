@@ -26,9 +26,11 @@ notebooks/
 └── 05_database.ipynb             # PostgreSQL integration (bonus feature)
 
 data/
-├── weather_zurich.csv            # Hourly weather data (2023)
-├── bikes_raw.csv                 # Hourly bicycle counts (2023)
-└── merged_weather_bikes.csv      # Combined dataset for analysis
+├── weather_zurich_2025.csv                           # Hourly weather data (2025)
+├── 2025_verkehrszaehlungen_werte_fussgaenger_velo.csv # Bicycle counts from Stadt Zürich
+├── taz.view_eco_standorte.csv                         # Bicycle counter locations (geodata)
+├── temperature_mean_zurich_2025.csv                   # Daily mean temperatures
+└── merged_weather_bikes.csv                            # Combined dataset for analysis
 
 docker-compose.yml                # PostgreSQL database configuration
 ```
@@ -59,7 +61,7 @@ docker-compose.yml                # PostgreSQL database configuration
 - **Open-Meteo API** for weather data
 - **PostgreSQL 15** with Docker for data persistence
 - **psycopg2** for database connectivity
-- **Synthetic data** for bicycle counters (representative patterns)
+- **Real bicycle count data** from Stadt Zürich Open Data portal
 
 ## Results Highlights
 
@@ -143,5 +145,5 @@ docker-compose.yml                # PostgreSQL database configuration
 ---
 
 **Author**: ZHAW Data Analytics Project  
-**Date**: December 2025  
+**Date**: January 2026  
 **Status**: Complete
